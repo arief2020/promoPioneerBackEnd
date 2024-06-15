@@ -1,0 +1,64 @@
+# version: "3"
+
+# networks:
+#   backend:
+#     driver: bridge
+
+# services:
+#   postgres:
+#     image: postgres:16.2-alpine3.19
+#     networks:
+#       - backend
+#     restart: always
+#     env_file: ./.env
+#     environment:
+#       - PGPORT=5439
+#     ports:
+#       - 5439:5439
+#     volumes:
+#       - pg_data:/var/lib/postgresql/data
+
+#   app:
+#     depends_on:
+#       - postgres
+#     build: .
+#     networks:
+#       - backend
+#     restart: always
+#     env_file: ./.env
+#     ports:
+#       - 8080:8080
+
+# volumes:
+#   pg_data:
+
+version: '3.8'
+
+services:
+  db:
+    image: postgres:13
+    restart: always
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: 12345678
+      POSTGRES_DB: latihan3
+    ports:
+      - "5432:5432"
+    volumes:
+      - postgres-data:/var/lib/postgresql/data
+
+  app:
+    build: .
+    ports:
+      - "5000:5000"
+    environment:
+      DATABASE_URL: postgres://postgres:12345678@db:5432/latihan3
+    depends_on:
+      - db
+    volumes:
+      - .:/app
+    command: >
+      sh -c "npm run migrate && npm run seed && npm start"
+
+volumes:
+  postgres-data:

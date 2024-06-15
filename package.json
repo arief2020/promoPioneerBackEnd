@@ -5,9 +5,13 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "nodemon index",
+    "dev": "nodemon index",
+    "start": "node index",
     "lint": "standard --fix",
-    "lint:check": "standard --verbose | snazzy"
+    "lint:check": "standard --verbose | snazzy",
+    "docker": "NODE_ENV=docker && node ./bin/www.js",
+    "migrate": "prisma migrate deploy",
+    "seed": "node prisma/seed.js"
   },
   "prisma": {
     "seed": "node prisma/seeds/seed.js"
