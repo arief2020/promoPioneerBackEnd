@@ -11,7 +11,7 @@
     "lint:check": "standard --verbose | snazzy",
     "docker": "NODE_ENV=docker && node ./bin/www.js",
     "migrate": "prisma migrate deploy",
-    "seed": "node prisma/seed.js"
+    "seed": "node prisma/seeds/seed.js"
   },
   "prisma": {
     "seed": "node prisma/seeds/seed.js"

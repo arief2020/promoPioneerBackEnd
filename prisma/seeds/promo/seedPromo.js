@@ -39,8 +39,10 @@ const PROMO = [
 const seedPromo = async () => {
   await Promise.all(
     PROMO.map(async (promo) => {
-      await prisma.promo.create({
-        data: promo
+      await prisma.promo.upsert({
+        where: { id: promo.id },
+        update: {},
+        create: promo
       })
     })
   )

@@ -2,7 +2,7 @@ const prisma = require('../../../libs/prisma')
 
 const PRODUCT = [
   {
-    // id: 1,
+    id: 1,
     category_id: 1,
     warehouse_id: 1,
     name: 'Cute Baby Jumper',
@@ -14,7 +14,7 @@ const PRODUCT = [
     weight: 150
   },
   {
-    // id: 2,
+    id: 2,
 
     category_id: 1,
     warehouse_id: 2,
@@ -28,7 +28,7 @@ const PRODUCT = [
   },
 
   {
-    // id: 3,
+    id: 3,
     category_id: 2,
     warehouse_id: 3,
     name: 'Baby Spoon and Fork Set',
@@ -40,7 +40,7 @@ const PRODUCT = [
     weight: 50
   },
   {
-    // id: 4,
+    id: 4,
     category_id: 2,
     warehouse_id: 4,
     name: 'Non-Spill Baby Plate',
@@ -53,7 +53,7 @@ const PRODUCT = [
   },
 
   {
-    // id: 5,
+    id: 5,
     category_id: 3,
     warehouse_id: 5,
     name: 'Disposable Diapers',
@@ -65,7 +65,7 @@ const PRODUCT = [
     weight: 100
   },
   {
-    // id: 6,
+    id: 6,
     category_id: 3,
     warehouse_id: 6,
     name: 'Cloth Diapers',
@@ -78,7 +78,7 @@ const PRODUCT = [
   },
 
   {
-    // id: 7,
+    id: 7,
     category_id: 4,
     warehouse_id: 7,
     name: 'Anti-Colic Baby Bottle',
@@ -90,7 +90,7 @@ const PRODUCT = [
     weight: 70
   },
   {
-    // id: 8,
+    id: 8,
     category_id: 4,
     warehouse_id: 8,
     name: 'Bottle Sterilizer',
@@ -103,7 +103,7 @@ const PRODUCT = [
   },
 
   {
-    // id: 9,
+    id: 9,
     category_id: 5,
     warehouse_id: 9,
     name: 'Lightweight Foldable Stroller',
@@ -115,7 +115,7 @@ const PRODUCT = [
     weight: 500
   },
   {
-    // id: 10,
+    id: 10,
     category_id: 5,
     warehouse_id: 10,
     name: '3-Wheel Baby Stroller',
@@ -128,7 +128,7 @@ const PRODUCT = [
   },
 
   {
-    // id: 11,
+    id: 11,
     category_id: 6,
     warehouse_id: 11,
     name: 'Foldable Baby Bed',
@@ -140,7 +140,7 @@ const PRODUCT = [
     weight: 1000
   },
   {
-    // id: 12,
+    id: 12,
     category_id: 6,
     warehouse_id: 12,
     name: 'Cute Baby Night Light',
@@ -153,7 +153,7 @@ const PRODUCT = [
   },
 
   {
-    // id: 13,
+    id: 13,
     category_id: 7,
     warehouse_id: 13,
     name: 'Playful Baby Bolster',
@@ -165,7 +165,7 @@ const PRODUCT = [
     weight: 200
   },
   {
-    // id: 14,
+    id: 14,
     category_id: 7,
     warehouse_id: 14,
     name: 'Interactive Baby Book',
@@ -178,7 +178,7 @@ const PRODUCT = [
   },
 
   {
-    // id: 15,
+    id: 15,
     category_id: 8,
     warehouse_id: 15,
     name: 'Foldable Baby Bath Tub',
@@ -190,7 +190,7 @@ const PRODUCT = [
     weight: 600
   },
   {
-    // id: 16,
+    id: 16,
     category_id: 8,
     warehouse_id: 16,
     name: 'Organic Baby Shampoo',
@@ -202,7 +202,7 @@ const PRODUCT = [
     weight: 200
   },
   {
-    // id: 17,
+    id: 17,
     category_id: 9,
     warehouse_id: 17,
     name: 'Electric Breast Pump',
@@ -214,7 +214,7 @@ const PRODUCT = [
     weight: 600
   },
   {
-    // id: 18,
+    id: 18,
     category_id: 9,
     warehouse_id: 18,
     name: 'Manual Breast Pump',
@@ -226,7 +226,7 @@ const PRODUCT = [
     weight: 300
   },
   {
-    // id: 19,
+    id: 19,
     category_id: 10,
     warehouse_id: 19,
     name: 'Baby Monitor',
@@ -238,7 +238,7 @@ const PRODUCT = [
     weight: 400
   },
   {
-    // id: 20,
+    id: 20,
     category_id: 10,
     warehouse_id: 20,
     name: 'Baby Safety Gate',
@@ -251,26 +251,26 @@ const PRODUCT = [
   }
 ]
 
+const seedProduct = async () => {
+  await Promise.all(
+    PRODUCT.map(async (product) => {
+      await prisma.product.upsert({
+        where: { id: product.id },
+        update: {},
+        create: product,
+      })
+    }),
+  )
+}
 // const seedProduct = async () => {
 //   await Promise.all(
 //     PRODUCT.map(async (product) => {
 //       await prisma.product.create({
-//         where: { id: product.id },
-//         update: product,
-//         create: product,
+//         data: product
+
 //       })
-//     }),
+//     })
 //   )
 // }
-const seedProduct = async () => {
-  await Promise.all(
-    PRODUCT.map(async (product) => {
-      await prisma.product.create({
-        data: product
-
-      })
-    })
-  )
-}
 
 module.exports = seedProduct

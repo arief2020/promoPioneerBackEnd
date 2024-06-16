@@ -18,5 +18,5 @@ app.use(router)
 app.use(errorHandler)
 
 app.listen(process.env.BACKEND_PORT, () => {
-  console.log('app running in port 5000')
+  console.log(`app running in port ${process.env.BACKEND_PORT}`)
 })

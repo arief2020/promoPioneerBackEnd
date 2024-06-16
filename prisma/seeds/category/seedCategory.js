@@ -2,73 +2,73 @@ const prisma = require('../../../libs/prisma')
 
 const CATEGORIES = [
   {
-    // id: 1,
+    id: 1,
     name: 'Baby Clothing'
   },
   {
-    // id: 2,
+    id: 2,
     name: 'Baby Feeding Equipment'
   },
   {
-    // id: 3,
+    id: 3,
     name: 'Diapers and Baby Wipes'
   },
   {
-    // id: 4,
+    id: 4,
     name: 'Baby Bottles and Accessories'
   },
   {
-    // id: 5,
+    id: 5,
     name: 'Strollers and Pushchairs'
   },
   {
-    // id: 6,
+    id: 6,
     name: 'Baby Room'
   },
   {
-    // id: 7,
+    id: 7,
     name: 'Baby Toys'
   },
   {
-    // id: 8,
+    id: 8,
     name: 'Baby Bath Accessories'
   },
   {
-    // id: 9,
+    id: 9,
     name: 'Baby Nursing Equipment'
   },
   {
-    // id: 10,
+    id: 10,
     name: 'Baby Health and Safety'
   }
 
 ]
 
-// const seedCategories = async () => {
-//   await Promise.all(
-//     CATEGORIES.map(async (category) => {
-//       await prisma.category.upsert({
-//         where: { id: category.id },
-//         update: {},
-//         create: category
-//       })
-//     })
-//   )
-// }
-const seedCategories =
-  async () => {
-    await Promise.all(
-      CATEGORIES.map(
-        async (category) => {
-          await prisma.category.create(
-            {
-              data: category
-            }
-          )
-        }
-      )
-    )
-  }
+const seedCategories = async () => {
+  await Promise.all(
+    CATEGORIES.map(async (category) => {
+      await prisma.category.upsert({
+        where: { id: category.id },
+        update: {},
+        create: category
+      })
+    })
+  )
+}
+// const seedCategories =
+//   async () => {
+//     await Promise.all(
+//       CATEGORIES.map(
+//         async (category) => {
+//           await prisma.category.create(
+//             {
+//               data: category
+//             }
+//           )
+//         }
+//       )
+//     )
+//   }
 
 module.exports =
   seedCategories
