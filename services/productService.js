@@ -296,8 +296,12 @@ class ProductService {
       })
       return { result }
     } catch (error) {
-      console.log(error)
-      throw error
+      if (error.code === 'P2002' ) {
+        console.log(`Unique constraint failed on the fields: (${error.meta.target.join(', ')}) heeeeyyeyeyey`);
+      } else {
+        console.error("ppppppppppppppp");
+      }
+      throw error;
     }
   }
 }
