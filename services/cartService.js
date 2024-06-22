@@ -4,8 +4,8 @@ const getDataUserCookie = require('../utils/cookie')
 class CartService {
   static async getAll (params) {
     try {
-      const user = getDataUserCookie(params)
-      const { id } = user
+      // const user = getDataUserCookie(params)
+      const { id } = params
       const carts = await prisma.cart.findUnique({
         where: {
           user_id: id
@@ -31,9 +31,9 @@ class CartService {
 
   static async store (params) {
     try {
-      const { cookie, body } = params
+      const { user, body } = params
       const { productId, quantity } = body
-      const user = getDataUserCookie(cookie)
+      // const user = getDataUserCookie(cookie)
       const { id } = user
       const cart = await prisma.cart.findUnique({
         where: {
@@ -68,9 +68,9 @@ class CartService {
 
   static async update (params) {
     try {
-      const { cookie, itemId, body } = params
+      const { user, itemId, body } = params
       const { quantity } = body
-      const user = getDataUserCookie(cookie)
+      // const user = getDataUserCookie(cookie)
       const { id } = user
       const cart = await prisma.cart.findUnique({
         where: {
@@ -97,8 +97,8 @@ class CartService {
 
   static async destroy (params) {
     try {
-      const { cookie, itemId } = params
-      const user = getDataUserCookie(cookie)
+      const { user, itemId } = params
+      // const user = getDataUserCookie(cookie)
       const { id } = user
       const cart = await prisma.cart.findUnique({
         where: {

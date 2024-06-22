@@ -27,7 +27,7 @@ class CheckoutController {
   static async storeProduct (req, res, next) {
     try {
       const params = {
-        cookie: req.cookies,
+        user: req.user,
         body: req.body,
         productId: req.params.id
       }
