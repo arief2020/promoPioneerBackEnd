@@ -6,8 +6,8 @@ class AuthMiddleware {
     try {
       const authHeader = req.headers.authorization
       const token = req.cookies.accessToken || authHeader?.split(' ')[1]
-      console.log(req.cookies, "ini cookies")
-      console.log(authHeader?.split(' ')[1], 'header')
+      console.log(req.cookies, "this cookies")
+      console.log(authHeader?.split(' ')[1], 'this header')
 
       if (!token) {
         console.log(token, "this token")
