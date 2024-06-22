@@ -6,8 +6,11 @@ class AuthMiddleware {
     try {
       const authHeader = req.headers.authorization
       const token = req.cookies.accessToken || authHeader?.split(' ')[1]
+      console.log(req.cookies, "ini cookies")
+      console.log(authHeader?.split(' ')[1], 'header')
 
       if (!token) {
+        console.log(token, "this token")
         return res.status(401).json({ error: 'Unauthorized: Token not provided' })
       }
 

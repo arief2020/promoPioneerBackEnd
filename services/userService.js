@@ -69,8 +69,9 @@ class UserService {
 
   static async getBio (params) {
     try {
-      const user = getDataUserCookie(params)
-      const { id } = user
+      // const user = getDataUserCookie(params)
+      // const { id } = user
+      const { id } = params
       const users = await prisma.user.findUnique({
         where: {
           id

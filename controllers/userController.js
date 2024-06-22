@@ -12,7 +12,7 @@ class userController {
 
   static async getBio (req, res, next) {
     try {
-      const user = await UserService.getBio(req.cookies)
+      const user = await UserService.getBio(req.user)
       return res.status(200).json(user)
     } catch (error) {
       next(error)
