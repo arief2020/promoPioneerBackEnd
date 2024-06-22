@@ -23,7 +23,7 @@ class userController {
     try {
       const params = {
         file: req.file,
-        cookie: req.cookies,
+        user: req.user,
         body: req.body
       }
       const user = await UserService.updateBio(params)
@@ -36,7 +36,7 @@ class userController {
   static async setAddress (req, res, next) {
     try {
       const params = {
-        cookie: req.cookies,
+        user: req.user,
         body: req.body
       }
       const user = await UserService.setAddress(params)

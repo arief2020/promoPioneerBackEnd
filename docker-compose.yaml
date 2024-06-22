@@ -20,7 +20,6 @@ services:
       - pg_data:/var/lib/postgresql/data
 
   app:
-    image: musarif/promopioneerbackend-app:1.0.0
     depends_on:
       - postgres
     build: .

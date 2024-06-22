@@ -67,11 +67,10 @@ class UserService {
     }
   }
 
-  static async getBio (params) {
+  static async getBio (user) {
     try {
       // const user = getDataUserCookie(params)
-      // const { id } = user
-      const { id } = params
+      const { id } = user
       const users = await prisma.user.findUnique({
         where: {
           id
@@ -89,14 +88,14 @@ class UserService {
 
   static async updateBio (params) {
     try {
-      const { cookie, body, file } = params
+      const { user, body, file } = params
       const { name, userCityId, fullAddress, age, gender, phoneNumber } = body
       if (!userCityId || !fullAddress || !age || !gender || !phoneNumber || !name) {
         const error = new Error('field requied')
         error.name = 'BadRequest'
         throw error
       }
-      const user = getDataUserCookie(cookie)
+      // const user = getDataUserCookie(cookie)
       const { id } = user
       const users = await prisma.user.findUnique({
         where: {
