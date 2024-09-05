@@ -28,7 +28,7 @@ services:
     restart: always
     env_file: ./.env
     ports:
-      - 8080:8080
+      - 5000:5000
     command: >
       sh -c "npm run migrate && npm run seed && npm start"
 

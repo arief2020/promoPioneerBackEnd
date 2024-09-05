@@ -11,7 +11,7 @@ const app = express()
 
 app.use(morgan('tiny'))
 
-app.use(cors({ credentials: true, origin: 'https://promo-pioneer.vercel.app/' }))
+app.use(cors({ credentials: true, origin: 'https://promo-pioneer.vercel.app' }))
 app.use(cookieParser())
 app.use(express.json())
 app.use(router)

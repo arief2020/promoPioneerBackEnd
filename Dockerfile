@@ -31,7 +31,7 @@ COPY . .
 RUN npx prisma generate
 
 # Expose port yang digunakan aplikasi (misalnya, 3000)
-EXPOSE 8080
+EXPOSE 5000
 
 # Jalankan aplikasi
 CMD ["npm", "run", "start"]
